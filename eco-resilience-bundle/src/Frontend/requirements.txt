@@ -1,0 +1,11 @@
+# EcoResilience AI - Databricks App Dependencies
+# Flask, gunicorn, and databricks-sdk are pre-installed in the Databricks Apps runtime.
+# Listing here for clarity and version pinning if needed.
+flask>=3.1
+databricks-sdk>=0.33.0
+
+# Grant-draft PDF generation pipeline
+fpdf2>=2.7              # Pure-Python PDF rendering (no C-deps unlike weasyprint).
+                        # Replaces the weasyprint+Jinja2 stack — works on any container
+                        # without libpango/libcairo/libgobject system libraries.
+requests>=2.28          # HTTP client for eco_resilience_agent endpoint calls

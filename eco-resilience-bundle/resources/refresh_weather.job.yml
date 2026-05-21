@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    refresh_weather:
+      name: refresh_weather
+      tasks:
+        - task_key: refresh_weather
+          description: 'Refreshes silver.weather_current from the Open-Meteo API for the 15 seeded NSW locations. Bronze append-only with _ingest_time; silver rebuilt every run with CLUSTER BY (h3_cell). Source: notebook 02.'
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/02_ingest_open_meteo.py
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+      email_notifications:
+        on_failure:
+          - wzhang3@cartology.com.au
+      max_concurrent_runs: 1
+      schedule:
+        pause_status: UNPAUSED
+        quartz_cron_expression: 0 0 0/6 * * ?
+        timezone_id: Australia/Sydney
+      timeout_seconds: 0
+      webhook_notifications: {}

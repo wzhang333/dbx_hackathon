@@ -1,0 +1,17 @@
+# Runtime requirements for the deployed EcoResilience AI agent.
+# Captured by `mlflow.pyfunc.log_model(pip_requirements="requirements.txt", ...)`
+# in `notebooks/13_deploy_agent.py`. These versions are installed into the
+# Model Serving endpoint container.
+#
+# Pin floors only (except mlflow's major) so the runtime stays current within
+# a stable major version.
+
+mlflow>=3.0,<4
+databricks-agents>=0.20
+databricks-langchain>=0.5
+databricks-vectorsearch>=0.40
+langchain>=0.3
+langchain-core>=0.3
+langgraph>=0.2
+typing_extensions>=4.12
+pydantic>=2.0

@@ -1,0 +1,29 @@
+resources:
+  jobs:
+    18_api_to_landing:
+      name: 18_api_to_landing
+      tasks:
+        - task_key: 18_api_to_landing
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/18_api_to_landing.py
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+      email_notifications:
+        on_failure:
+          - wzhang3@cartology.com.au
+      max_concurrent_runs: 1
+      notification_settings:
+        no_alert_for_skipped_runs: true
+      performance_target: PERFORMANCE_OPTIMIZED
+      queue:
+        enabled: true
+      timeout_seconds: 0
+      trigger:
+        pause_status: UNPAUSED
+        periodic:
+          interval: 6
+          unit: HOURS
+      webhook_notifications: {}
