@@ -1,0 +1,24 @@
+resources:
+  jobs:
+    refresh_hazards:
+      name: refresh_hazards
+      tasks:
+        - task_key: refresh_hazards
+          description: 'Refreshes silver.hazards_current from TfNSW Live Traffic API (4 hazard feeds: incident, flood, fire, roadwork). Reads tfnsw_api_key from secret scope eco_resilience. Bronze append-only; silver rebuilt every run. Source: notebook 03.'
+          disabled: false
+          email_notifications: {}
+          notebook_task:
+            notebook_path: ../src/03_ingest_tfnsw_hazards.py
+            source: WORKSPACE
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+      email_notifications:
+        on_failure:
+          - wzhang3@cartology.com.au
+      max_concurrent_runs: 1
+      schedule:
+        pause_status: UNPAUSED
+        quartz_cron_expression: 0 0 0/3 * * ?
+        timezone_id: Australia/Sydney
+      timeout_seconds: 0
+      webhook_notifications: {}

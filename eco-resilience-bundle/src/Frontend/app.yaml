@@ -1,0 +1,16 @@
+command:
+  - gunicorn
+  - app:app
+  - --bind
+  - 0.0.0.0:8000
+  - --workers
+  - "2"
+  - --timeout
+  - "300"
+env:
+  - name: DATABRICKS_WAREHOUSE_ID
+    value: dc189fe4fd0f924b
+  - name: ECORESILIENCE_JOB_ID
+    value: "1009568797220506"
+  - name: ECORESILIENCE_AGENT_ENDPOINT
+    value: "eco_resilience_agent"

@@ -1,0 +1,26 @@
+resources:
+  jobs:
+    eco_resilience_dlt:
+      name: eco_resilience_dlt
+      tasks:
+        - task_key: pipeline-task-88bf2110-0b7f-4991-8e2d-bf6da029ce84
+          disabled: false
+          email_notifications: {}
+          pipeline_task:
+            pipeline_id: 88bf2110-0b7f-4991-8e2d-bf6da029ce84
+          run_if: ALL_SUCCESS
+          timeout_seconds: 0
+      email_notifications:
+        on_failure:
+          - wzhang3@cartology.com.au
+      max_concurrent_runs: 1
+      notification_settings:
+        no_alert_for_skipped_runs: true
+      performance_target: PERFORMANCE_OPTIMIZED
+      timeout_seconds: 0
+      trigger:
+        pause_status: UNPAUSED
+        periodic:
+          interval: 6
+          unit: HOURS
+      webhook_notifications: {}
