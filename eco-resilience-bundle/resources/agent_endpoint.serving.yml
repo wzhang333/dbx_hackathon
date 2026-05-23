@@ -1,0 +1,22 @@
+resources:
+  model_serving_endpoints:
+    eco_resilience_agent:                          # ← local name
+      name: eco_resilience_agent                    # ← workspace display name
+      config:
+        served_entities:
+          - name: "eco_resilience_agent_v1"
+            entity_name: "eco_resilience.silver.eco_resilience_agent"
+            entity_version: "latest"
+            workload_size: "Small"
+            scale_to_zero_enabled: true
+            environment_vars:
+              ABR_AUTH_GUID: "{{secrets/eco_resilience/abr_auth_guid}}"
+        traffic_config:
+          routes:
+            - served_model_name: "eco_resilience_agent_v1"
+              traffic_percentage: 100
+      tags:
+        - key: "deployment_method"
+          value: "asset_bundle"
+        - key: "environment"
+          value: "${bundle.target}"

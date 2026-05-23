@@ -1,0 +1,45 @@
+resources:
+  jobs:
+    uc_functions_setup:
+      name: uc_functions_setup
+      tasks:
+        - task_key: register_verify_abn
+          description: "verify the given abn, return business information registered by the abn, including postcode"
+          notebook_task:
+            notebook_path: ../src/uc_functions/register_uc_functions_verify_abn.py
+            source: WORKSPACE
+
+        - task_key: register_weather_hazards_climate
+          description: "get weather forcast for the given postcode"
+          notebook_task:
+            notebook_path: ../src/uc_functions/register_uc_functions_weather_hazards_climate.py
+            source: WORKSPACE
+
+        - task_key: register_query_nema_guides
+          description: "register the rag tool"
+          notebook_task: 
+            notebook_path: ../src/uc_functions/register_rag_tool.py
+            source: WORKSPACE
+
+        - task_key: register_industry_context
+          description: "register the tool of get industry context"
+          notebook_task:
+            notebook_path: ../src/uc_functions/register_industry_tool.py
+            source: WORKSPACE
+
+        - task_key: register_grant_tool
+          description: "register pdf grant generation tool"
+          notebook_task:
+            notebook_path: ../src/uc_functions/register_grant_tool.py
+            source: WORKSPACE
+
+      max_concurrent_runs: 1
+      performance_target: PERFORMANCE_OPTIMIZED
+      email_notifications:
+        on_failure: 
+          - wzhang3@cartology.com.au
+      notification_settings:
+        no_alert_for_skipped_runs: true
+
+      #no schedule block - this job is manually triggered
+      # databricks bundle run uc_functions_setup --target dev
