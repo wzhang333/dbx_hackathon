@@ -1,7 +1,7 @@
 resources:
   jobs:
-    eco_resilience_dlt:
-      name: eco_resilience_dlt
+    eco_resilience_dlt_job:
+      name: eco_resilience_dlt_job
       tasks:
         - task_key: trigger_sdp_pipeline
           disabled: false

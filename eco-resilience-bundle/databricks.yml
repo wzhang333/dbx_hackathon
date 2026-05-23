@@ -1,8 +1,31 @@
 bundle:
   name: eco_resilience_dab
+  deployment:
+    lock:
+      enabled: true
+
+variables:
+  catalog:
+    description: "UC catalog for all resources"
+    default: "eco_resilience"
+  silver_schema:
+    description: "Schema for UC functions + registered agent model + grants volume"
+    default: "silver"
+  dlt_schema:
+    description: "Schema for SDP pipeline outputs"
+    default: "dlt"
+  notify_email:
+    description: "email notification when job/pipeline failure"
+    default: "zhangwen423@hotmail.com"
+
+include:
+  - resources/*.yml
 
 targets:
   dev:
     default: true
+    mode: development
     workspace:
-      host: https://dbc-ac725976-1264.cloud.databricks.com   # ← AWS workspace for now
+      host: https://adb-4354606838595642.2.azuredatabricks.net/
+    run_as:
+      user_name: zhangwen423@hotmail.com
