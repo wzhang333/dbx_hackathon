@@ -8,7 +8,7 @@ resources:
           disabled: false
           email_notifications: {}
           notebook_task:
-            notebook_path: ../src/ingest_tfnsw_hazards.py
+            notebook_path: ../src/ingestion/ingest_tfnsw_hazards.py
             source: WORKSPACE
           run_if: ALL_SUCCESS
           timeout_seconds: 0

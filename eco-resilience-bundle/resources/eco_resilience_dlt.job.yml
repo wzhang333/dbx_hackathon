@@ -3,11 +3,11 @@ resources:
     eco_resilience_dlt:
       name: eco_resilience_dlt
       tasks:
-        - task_key: pipeline-task-88bf2110-0b7f-4991-8e2d-bf6da029ce84
+        - task_key: trigger_sdp_pipeline
           disabled: false
           email_notifications: {}
           pipeline_task:
-            pipeline_id: 88bf2110-0b7f-4991-8e2d-bf6da029ce84
+            pipeline_id: ${resources.pipelines.eco_resilience_dlt.id}
           run_if: ALL_SUCCESS
           timeout_seconds: 0
       email_notifications:

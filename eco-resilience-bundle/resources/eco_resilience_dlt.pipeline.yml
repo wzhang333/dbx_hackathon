@@ -11,7 +11,7 @@ resources:
       # `bundle generate pipeline` produced (only valid for the source workspace).
       libraries:
         - notebook:
-            path: ../src/dlt/17_dlt_ingestion_pipeline.py
+            path: ../src/dlt/dlt_ingestion_pipeline.py
       catalog: eco_resilience
       channel: CURRENT
       continuous: false
