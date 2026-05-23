@@ -635,6 +635,43 @@
         <section id="section-6" class="rounded-xl industrial-section card-shadow overflow-hidden bg-[#fafafb]">
             <div class="bg-indigo-100 border-b border-indigo-200 px-6 py-4 flex items-center gap-3">
                 <span class="flex items-center justify-center w-7 h-7 rounded bg-slate-900 text-white font-bold text-xs">5</span>
+                <h2 class="text-lg font-bold text-slate-900 uppercase tracking-tight">Your Recent Applications</h2>
+            </div>
+            <div class="px-6 py-3 border-b border-slate-200 bg-white">
+                <p class="text-xs text-slate-500">
+                    Persisted to <span class="font-mono text-orange-600 font-semibold">Lakebase</span>
+                    (Databricks managed Postgres, governed by Unity Catalog).
+                    Last 20 submissions shown, newest first.
+                </p>
+            </div>
+            <div class="p-6">
+                <div id="grant-history-empty" class="text-sm text-slate-500 italic">
+                    Verify your business above to see your application history.
+                </div>
+                <div id="grant-history-table-wrap" class="hidden overflow-x-auto">
+                    <table class="min-w-full text-xs">
+                        <thead class="bg-slate-100 text-slate-700">
+                            <tr>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Generated</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">ABN</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Business</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Postcode</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">App ID</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Status</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Original request</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grant-history-tbody" class="divide-y divide-slate-200 bg-white"></tbody>
+                    </table>
+                </div>
+                <div id="grant-history-error" class="hidden mt-3 text-xs text-rose-600"></div>
+            </div>
+        </section>
+
+        <!-- Section 6: Genie Space Access -->
+        <section id="section-6" class="rounded-xl industrial-section card-shadow overflow-hidden bg-[#fafafb]">
+            <div class="bg-indigo-100 border-b border-indigo-200 px-6 py-4 flex items-center gap-3">
+                <span class="flex items-center justify-center w-7 h-7 rounded bg-slate-900 text-white font-bold text-xs">6</span>
                 <h2 class="text-lg font-bold text-slate-900 uppercase tracking-tight">Data Explorer — Genie Space</h2>
             </div>
             <div class="p-6 space-y-6">
