@@ -1,13 +1,13 @@
 resources:
   jobs:
-    18_api_to_landing:
-      name: 18_api_to_landing
+    api_to_landing:
+      name: api_to_landing
       tasks:
-        - task_key: 18_api_to_landing
+        - task_key: api_to_landing
           disabled: false
           email_notifications: {}
           notebook_task:
-            notebook_path: ../src/18_api_to_landing.py
+            notebook_path: ../src/api_to_landing.py
             source: WORKSPACE
           run_if: ALL_SUCCESS
           timeout_seconds: 0

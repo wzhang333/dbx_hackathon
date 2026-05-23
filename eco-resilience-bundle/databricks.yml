@@ -1,0 +1,8 @@
+bundle:
+  name: eco_resilience_dab
+
+targets:
+  dev:
+    default: true
+    workspace:
+      host: https://dbc-ac725976-1264.cloud.databricks.com   # ← AWS workspace for now

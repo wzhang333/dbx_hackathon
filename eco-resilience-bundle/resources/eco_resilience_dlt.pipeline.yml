@@ -1,0 +1,20 @@
+resources:
+  pipelines:
+    eco_resilience_dlt:
+      name: eco_resilience_dlt
+      configuration:
+        tfnsw_secret_key: tfnsw_api_key
+        tfnsw_secret_scope: eco_resilience
+      # Local-relative notebook path — DAB uploads this file from disk at deploy
+      # time and rewrites it to the workspace path inside the bundle's namespace.
+      # Replaces the absolute `/Workspace/Shared/eco_resilience/DLT/...` path that
+      # `bundle generate pipeline` produced (only valid for the source workspace).
+      libraries:
+        - notebook:
+            path: ../src/dlt/17_dlt_ingestion_pipeline.py
+      catalog: eco_resilience
+      channel: CURRENT
+      continuous: false
+      photon: true
+      schema: dlt
+      serverless: true

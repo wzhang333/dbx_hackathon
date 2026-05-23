@@ -1,4 +1,0 @@
-# EcoResilience AI - Databricks App Dependencies
-# Flask, gunicorn, and databricks-sdk are pre-installed in the Databricks Apps runtime.
-# Listing here for clarity and version pinning if needed.
-databricks-sdk>=0.33.0
