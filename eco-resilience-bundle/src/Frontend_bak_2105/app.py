@@ -1828,28 +1828,11 @@ def _lakebase_conn():
     # Late import so the rest of the app works even if psycopg2 isn't installed yet
     import psycopg2
     import uuid
-    import base64
-    import json
 
     cred = w.database.generate_database_credential(
         request_id=str(uuid.uuid4()),
         instance_names=[LAKEBASE_INSTANCE],
     )
-
-    # DIAGNOSTIC: log the JWT subject so we can verify it matches LAKEBASE_USER.
-    # The JWT's `sub` claim IS the Postgres username Lakebase will recognize.
-    try:
-        payload_b64 = cred.token.split(".")[1]
-        payload_b64 += "=" * (-len(payload_b64) % 4)
-        claims = json.loads(base64.urlsafe_b64decode(payload_b64))
-        logger.info(
-            f"[lakebase] JWT sub={claims.get('sub')!r} "
-            f"client_id={claims.get('client_id')!r} | "
-            f"connecting as user={LAKEBASE_USER!r}"
-        )
-    except Exception as e:
-        logger.warning(f"[lakebase] could not decode JWT for diagnostic: {e}")
-
     return psycopg2.connect(
         host=LAKEBASE_HOST,
         port=5432,
@@ -1879,7 +1862,7 @@ def _log_grant_to_lakebase(business: dict, grant_struct: dict, user_query: str) 
                     business.get("state"),
                     grant_struct.get("application_id"),
                     grant_struct.get("status"),
-                    user_query or "",
+                    (user_query or "")[:500],   # truncate to keep row size sane
                 ),
             )
         logger.info(f"[lakebase] logged grant app_id={grant_struct.get('application_id')}")
@@ -1889,20 +1872,13 @@ def _log_grant_to_lakebase(business: dict, grant_struct: dict, user_query: str) 
 
 @app.route("/api/grant-history", methods=["GET"])
 def grant_history():
-    """Return the last 20 grant submissions from Lakebase for a specific ABN.
+    """Return the last 20 grant submissions from Lakebase (newest first).
 
-    Query params:
-        abn (required) — the 11-digit ABN to filter by.
-
-    Returns {submissions: []} if Lakebase isn't configured, ABN is missing,
-    or the read fails, so the frontend can render gracefully either way.
+    Returns {submissions: []} if Lakebase isn't configured or the read fails,
+    so the frontend can render gracefully either way.
     """
     if not LAKEBASE_HOST:
         return jsonify({"submissions": [], "lakebase_configured": False})
-
-    abn = request.args.get("abn", "").strip()
-    if not abn:
-        return jsonify({"submissions": [], "lakebase_configured": True})
 
     try:
         with _lakebase_conn() as conn, conn.cursor() as cur:
@@ -1912,11 +1888,9 @@ def grant_history():
                        application_id, grant_status, user_query,
                        generated_at
                 FROM grant_submissions
-                WHERE abn = %s
                 ORDER BY generated_at DESC
                 LIMIT 20
-                """,
-                (abn,),
+                """
             )
             cols = [d.name for d in cur.description]
             rows = []

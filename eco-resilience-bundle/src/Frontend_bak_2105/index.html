@@ -157,10 +157,7 @@
                     <span class="w-5 h-5 flex items-center justify-center bg-slate-100 rounded text-[10px]">4</span> Apply Grants
                 </a>
                 <a href="#section-5" class="nav-pill flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-bold text-slate-600 transition-all">
-                    <span class="w-5 h-5 flex items-center justify-center bg-slate-100 rounded text-[10px]">5</span> Your Recent Applications
-                </a>
-                <a href="#section-6" class="nav-pill flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-bold text-slate-600 transition-all">
-                    <span class="w-5 h-5 flex items-center justify-center bg-slate-100 rounded text-[10px]">6</span> Genie Space
+                    <span class="w-5 h-5 flex items-center justify-center bg-slate-100 rounded text-[10px]">5</span> Genie Space
                 </a>
 
             </div>
@@ -589,52 +586,11 @@
             </div>
         </section>
 
-        <!-- ============================================================ -->
-        <!-- Section 5 — Application history (Lakebase-backed)             -->
-        <!-- ============================================================ -->
-        <!-- Persists each grant the agent generates to Databricks Lakebase  -->
-        <!-- (managed Postgres in Unity Catalog). Demonstrates the OLTP side -->
-        <!-- of the lakehouse alongside the analytical Delta gold tables.    -->
+
+        <!-- Section 5: Genie Space Access -->
         <section id="section-5" class="rounded-xl industrial-section card-shadow overflow-hidden bg-[#fafafb]">
             <div class="bg-indigo-100 border-b border-indigo-200 px-6 py-4 flex items-center gap-3">
                 <span class="flex items-center justify-center w-7 h-7 rounded bg-slate-900 text-white font-bold text-xs">5</span>
-                <h2 class="text-lg font-bold text-slate-900 uppercase tracking-tight">Your Recent Applications</h2>
-            </div>
-            <div class="px-6 py-3 border-b border-slate-200 bg-white">
-                <p class="text-xs text-slate-500">
-                    Persisted to <span class="font-mono text-orange-600 font-semibold">Lakebase</span>
-                    (Databricks managed Postgres, governed by Unity Catalog).
-                    Last 20 submissions shown, newest first.
-                </p>
-            </div>
-            <div class="p-6">
-                <div id="grant-history-empty" class="text-sm text-slate-500 italic">
-                    Verify your business above to see your application history.
-                </div>
-                <div id="grant-history-table-wrap" class="hidden overflow-x-auto">
-                    <table class="min-w-full text-xs">
-                        <thead class="bg-slate-100 text-slate-700">
-                            <tr>
-                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Generated</th>
-                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">ABN</th>
-                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Business</th>
-                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Postcode</th>
-                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">App ID</th>
-                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Status</th>
-                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Original request</th>
-                            </tr>
-                        </thead>
-                        <tbody id="grant-history-tbody" class="divide-y divide-slate-200 bg-white"></tbody>
-                    </table>
-                </div>
-                <div id="grant-history-error" class="hidden mt-3 text-xs text-rose-600"></div>
-            </div>
-        </section>
-
-        <!-- Section 6: Genie Space Access -->
-        <section id="section-6" class="rounded-xl industrial-section card-shadow overflow-hidden bg-[#fafafb]">
-            <div class="bg-indigo-100 border-b border-indigo-200 px-6 py-4 flex items-center gap-3">
-                <span class="flex items-center justify-center w-7 h-7 rounded bg-slate-900 text-white font-bold text-xs">6</span>
                 <h2 class="text-lg font-bold text-slate-900 uppercase tracking-tight">Data Explorer — Genie Space</h2>
             </div>
             <div class="p-6 space-y-6">
@@ -762,7 +718,47 @@
             </div>
         </section>
 
-
+        <!-- ============================================================ -->
+        <!-- Section 6 — Application history (Lakebase-backed)             -->
+        <!-- ============================================================ -->
+        <!-- Persists each grant the agent generates to Databricks Lakebase  -->
+        <!-- (managed Postgres in Unity Catalog). Demonstrates the OLTP side -->
+        <!-- of the lakehouse alongside the analytical Delta gold tables.    -->
+        <section id="section-6" class="rounded-xl industrial-section card-shadow overflow-hidden bg-[#fafafb]">
+            <div class="bg-indigo-100 border-b border-indigo-200 px-6 py-4 flex items-center gap-3">
+                <span class="flex items-center justify-center w-7 h-7 rounded bg-slate-900 text-white font-bold text-xs">6</span>
+                <h2 class="text-lg font-bold text-slate-900 uppercase tracking-tight">Your recent applications</h2>
+            </div>
+            <div class="px-6 py-3 border-b border-slate-200 bg-white">
+                <p class="text-xs text-slate-500">
+                    Persisted to <span class="font-mono text-orange-600 font-semibold">Lakebase</span>
+                    (Databricks managed Postgres, governed by Unity Catalog).
+                    Last 20 submissions shown, newest first.
+                </p>
+            </div>
+            <div class="p-6">
+                <div id="grant-history-empty" class="text-sm text-slate-500 italic">
+                    No applications yet. Generate a draft in Section 4 and it will appear here.
+                </div>
+                <div id="grant-history-table-wrap" class="hidden overflow-x-auto">
+                    <table class="min-w-full text-xs">
+                        <thead class="bg-slate-100 text-slate-700">
+                            <tr>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Generated</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">ABN</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Business</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Postcode</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">App ID</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Status</th>
+                                <th class="px-3 py-2 text-left font-bold uppercase tracking-wide">Original request</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grant-history-tbody" class="divide-y divide-slate-200 bg-white"></tbody>
+                    </table>
+                </div>
+                <div id="grant-history-error" class="hidden mt-3 text-xs text-rose-600"></div>
+            </div>
+        </section>
 
     </main>
 
@@ -2122,9 +2118,6 @@
             // Show assess risk button
             const assessWrapper = document.getElementById('assess-risk-wrapper');
             if (assessWrapper) assessWrapper.classList.remove('hidden');
-
-            // Load grant history for this ABN from Lakebase
-            refreshGrantHistory(window.currentUserAbn);
         }
 
         // Validate supplier ABN input
@@ -3029,21 +3022,17 @@
         });
 
         // ========== Section 6 — Lakebase-backed grant history ==========
-        // Fetches /api/grant-history?abn=X after business verification.
+        // Polls /api/grant-history on page load and after each successful grant gen.
         // Lakebase is the OLTP side of the lakehouse — sub-100ms point reads.
-        async function refreshGrantHistory(abn) {
+        async function refreshGrantHistory() {
             const tbody    = document.getElementById('grant-history-tbody');
             const emptyMsg = document.getElementById('grant-history-empty');
             const tableWrap = document.getElementById('grant-history-table-wrap');
             const errBox   = document.getElementById('grant-history-error');
             if (!tbody) return;
 
-            // Use provided abn or fall back to the global state
-            const targetAbn = abn || window.currentUserAbn;
-            if (!targetAbn) return;  // No ABN yet — keep table empty
-
             try {
-                const resp = await fetch('/api/grant-history?abn=' + encodeURIComponent(targetAbn));
+                const resp = await fetch('/api/grant-history');
                 if (!resp.ok) throw new Error('HTTP ' + resp.status);
                 const data = await resp.json();
                 const rows = data.submissions || [];
@@ -3072,7 +3061,8 @@
                         : (s.grant_status === 'INVALID')
                             ? 'bg-amber-100 text-amber-800'
                             : 'bg-slate-100 text-slate-700';
-                    const queryDisplay = s.user_query || '';
+                    const query = (s.user_query || '').slice(0, 90);
+                    const queryDisplay = query.length === 90 ? query + '…' : query;
                     return `
                         <tr class="hover:bg-slate-50">
                             <td class="px-3 py-2 font-mono text-slate-600 whitespace-nowrap">${ts}</td>
@@ -3081,7 +3071,7 @@
                             <td class="px-3 py-2 font-mono text-slate-700">${s.postcode || '-'}</td>
                             <td class="px-3 py-2 font-mono text-emerald-700">${appIdShort}</td>
                             <td class="px-3 py-2"><span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide ${statusClass}">${s.grant_status || '-'}</span></td>
-                            <td class="px-3 py-2 text-slate-600 italic max-w-md whitespace-pre-wrap break-words">${queryDisplay || '-'}</td>
+                            <td class="px-3 py-2 text-slate-600 italic max-w-md truncate" title="${(s.user_query || '').replace(/"/g, '&quot;')}">${queryDisplay || '-'}</td>
                         </tr>
                     `;
                 }).join('');
@@ -3091,8 +3081,9 @@
             }
         }
 
-        // Refresh after every grant generation (uses window.currentUserAbn)
-        document.addEventListener('grant-draft-completed', () => refreshGrantHistory());
+        // Initial load + refresh after every grant generation
+        document.addEventListener('DOMContentLoaded', refreshGrantHistory);
+        document.addEventListener('grant-draft-completed', refreshGrantHistory);
 
         </script>
 
