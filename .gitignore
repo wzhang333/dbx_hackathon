@@ -1,0 +1,91 @@
+# ==============================================================================
+# 1. GENERATIVE AI / ML SPECIFIC
+# ==============================================================================
+# Never commit large model weights, datasets, or vector database indexes
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.gguf
+
+# Local Vector DB storage (e.g., Chroma, FAISS, LanceDB, DuckDB)
+.chroma/
+faiss_index/
+*.db
+*.sqlite
+
+# Local data and logs
+data/
+raw_data/
+output/
+artifacts/
+*.log
+wandb/
+lightning_logs/
+
+# ==============================================================================
+# 2. DATABRICKS & ASSET BUNDLES SPECIFIC
+# ==============================================================================
+# Databricks Asset Bundles (DABs) local states and targets
+.databricks/
+out/
+dist/
+
+# If you use the Databricks CLI or sync tools
+.databricks-connect
+.dbconnect
+
+# IDE/Notebook metadata generated when syncing Databricks Repos / Git folders
+.dbc_download/
+*.dbc
+
+# ==============================================================================
+# 3. SECURITY & ENVIRONMENT VARIABLES (CRITICAL)
+# ==============================================================================
+# Never commit your OpenAI, Anthropic, Databricks, or Cloud API tokens
+.env
+.env.local
+.env.*
+.secrets
+secrets.yaml
+*.pem
+*.key
+
+# ==============================================================================
+# 4. PYTHON SYSTEM & VIRTUAL ENVIRONMENTS
+# ==============================================================================
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments (Local development)
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Poetry, Pipenv, or Conda environments
+.poetry/
+.conda/
+
+# ==============================================================================
+# 5. OS & IDE FILES
+# ==============================================================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+
+
+# ==============================================================================
+# 6. My other ignore files
+# ==============================================================================
+
+
+test.txt
+archieve/
