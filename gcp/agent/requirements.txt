@@ -1,0 +1,7 @@
+google-cloud-bigquery>=3.25.0
+google-cloud-secret-manager>=2.20.0
+google-cloud-aiplatform>=1.70.0
+langchain-google-vertexai>=2.0.0
+langchain-core>=0.3.0
+langgraph>=0.2.0
+requests>=2.31.0
